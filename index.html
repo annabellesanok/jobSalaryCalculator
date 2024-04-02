@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <title>D3 selection</title>
+  <link rel='stylesheet' href='style.css'>
+</head>
+
+<body>
+  <div class="container">
+      <h2>Job Salary Calculator</h2>
+
+      <div class="dropdown-group">
+          <label for="dropdown1">Choose a company:</label>
+          <select id="dropdown1">
+              <option value="Alphabet">Alphabet</option>
+              <option value="Amazon">Amazon</option>
+              <option value="Apple">Apple</option>
+              <option value="Meta">Meta</option>
+              <option value="Microsoft">Microsoft</option>
+              <option value="Nvidia">Nvidia</option>
+              <option value="Tesla">Tesla</option>
+          </select>
+      </div>
+
+      <div class="dropdown-group">
+          <label for="dropdown2">Choose a job title:</label>
+          <select id="dropdown2">
+              <option value="Software Developer">Software Developer</option>
+              <option value="Project Manager">Project Manager</option>
+              <option value="Product Manager">Product Manager</option>
+              <option value="Program Manager">Program Manager</option>
+              <option value="Administrator">Administrator</option>
+              <option value="Sales">Sales</option>
+              <option value="Researcher">Researcher</option>
+              <option value="Data Scientist">Data Scientist</option>
+              <option value="UI Designer">UI Designer</option>
+              <option value="Security Engineer">Security Engineer</option>
+              <option value="Mechanical Engineer">Mechanical Engineer</option>
+          </select>
+      </div>
+
+      <div class="dropdown-group">
+          <label for="dropdown3">Choose a state:</label>
+          <select id="dropdown3">
+              <option value="California">California</option>
+              <option value="North Carolina">North Carolina</option>
+              <option value="Washington">Washington</option>
+              <option value="New York">New York</option>
+              <option value="Colorado">Colorado</option>
+          </select>
+      </div>
+
+      <button id="calculateBtn" onclick="onCalculateClicked()">Calculate</button>
+
+      <div class="output-group">
+        <label></label>
+        <div id="noData" class="output-box"></div>
+    </div>
+
+      <div class="output-group">
+          <label></label>
+          <div id="medianSalaryDifference" class="output-box"></div>
+      </div>
+
+      <div class="output-group">
+          <label></label>
+          <div id="costOfLivingComparison" class="output-box"></div>
+      </div>
+  </div>
+
+  <script src='https://d3js.org/d3.v7.min.js'></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
