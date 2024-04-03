@@ -1,4 +1,3 @@
-console.log("hi")
 let jobData = [];
 let zillowData = [];
 let medianSalaryData = [];
@@ -58,6 +57,7 @@ Promise.all(promises).then(function(values) {
     document.getElementById('medianSalaryDifference').textContent = '';
     document.getElementById('costOfLivingComparison').textContent = '';
     document.getElementById('noData').textContent = '';
+    document.getElementById('averageSalaryOutput').textContent = '';
   
     const averageSalary = calculateAverageSalary(company, jobTag, state);
 
@@ -72,21 +72,30 @@ Promise.all(promises).then(function(values) {
 
     const salaryDifference = averageSalary === 0 ? null : averageSalary - medianSalary;
 
+    var formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+      });
+
+    const averageSalaryElement = document.getElementById('averageSalaryOutput');
+    averageSalaryElement.textContent = "The average salary for your selection is: " + formatter.format(averageSalary);
+
     const medianSalaryDifferenceElement = document.getElementById('medianSalaryDifference');
     if (salaryDifference !== null) {
-      //medianSalaryDifferenceElement.textContent = `The average salary is of this role is ${salaryDifference >= 0 ? '$' + salaryDifference.toFixed(2) + ' more' : '-$' + Math.abs(salaryDifference).toFixed(2) + ' less'} than the median salary in the state.`;
       medianSalaryDifferenceElement.textContent = `The average salary of this role is ${salaryDifference >= 0 
-        ? '$' + salaryDifference.toFixed(2) + ' more' 
-        : '$' + Math.abs(salaryDifference).toFixed(2) + ' less'} than the median salary in the state.`;
+        ? formatter.format(salaryDifference) + ' more' 
+        : Math.abs(formatter.format(salaryDifference))+ ' less'} than the median salary in ` + state + ".";
     } else {
       medianSalaryDifferenceElement.textContent = 'Median salary data for the selected state is not available.';
     }
+
   
     const costOfLivingComparisonElement = document.getElementById('costOfLivingComparison');
     const isSalaryGreaterThanCostOfLiving = compareSalaryToCostOfLiving(averageSalary, state);
     costOfLivingComparisonElement.textContent = isSalaryGreaterThanCostOfLiving 
-        ? "This salary is greater than the average cost of living in the state." 
-        : "This salary is less than the average cost of living in this state.";
+        ? "This salary is greater than the average cost of living in " + state + "."
+        : "This salary is less than the average cost of living in " + state + "." ;
   }
 
 
