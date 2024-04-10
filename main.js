@@ -94,8 +94,8 @@ Promise.all(promises).then(function(values) {
     const costOfLivingComparisonElement = document.getElementById('costOfLivingComparison');
     const isSalaryGreaterThanCostOfLiving = compareSalaryToCostOfLiving(averageSalary, state);
     costOfLivingComparisonElement.textContent = isSalaryGreaterThanCostOfLiving 
-        ? "This salary is greater than the average cost of living in " + state + "."
-        : "This salary is less than the average cost of living in " + state + "." ;
+        ? "This salary is greater than the average cost of rent in " + state + "."
+        : "This salary is less than the average cost of rent in " + state + "." ;
   }
 
 
